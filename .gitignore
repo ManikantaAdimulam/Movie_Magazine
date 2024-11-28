@@ -401,3 +401,5 @@ ios/Pods
 ios/vendor/*
 
 build/
+vendor/*
+.DS_Store
