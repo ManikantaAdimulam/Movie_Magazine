@@ -403,3 +403,4 @@ ios/vendor/*
 build/
 vendor/*
 .DS_Store
+*.lock
