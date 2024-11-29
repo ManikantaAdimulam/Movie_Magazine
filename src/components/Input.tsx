@@ -9,26 +9,45 @@ import {
 import React from 'react';
 import CommonStyles from '@utils/theme/styles';
 import Colors from '@utils/theme/colors';
-
 interface IInputProps {
   placeholder: string;
   placeholderColor?: string;
   style?: TextStyle;
   containerStyle?: ViewStyle;
+  LeadingView?: React.ReactNode;
+  error?: string | null;
+  onChangeText: (text: string) => void;
 }
 const Input = ({
   placeholder = '',
   placeholderColor = Colors.text_secondary,
   style = {},
   containerStyle = {},
+  LeadingView = null,
+  error = null,
+  onChangeText,
 }: IInputProps) => {
   return (
-    <View style={[styles.inputBg, containerStyle]}>
-      <TextInput
-        placeholder={placeholder}
-        style={[styles.text, style]}
-        placeholderTextColor={placeholderColor}
-      />
+    <View>
+      <View
+        style={[
+          styles.inputBg,
+          containerStyle,
+          error ? styles.errorBorder : {},
+        ]}>
+        <View style={styles.iconBg}>{LeadingView && LeadingView}</View>
+        <TextInput
+          onChangeText={onChangeText}
+          placeholder={placeholder}
+          style={[styles.text, error ? styles.errorText : {}, style]}
+          placeholderTextColor={placeholderColor}
+        />
+      </View>
+      {error && (
+        <View style={styles.errorBg}>
+          <Text style={styles.errorText}>{error}</Text>
+        </View>
+      )}
     </View>
   );
 };
@@ -40,13 +59,30 @@ const styles = StyleSheet.create({
     height: 54,
     borderRadius: 27,
     backgroundColor: Colors.white,
-    justifyContent: 'center',
+    alignItems: 'center',
     paddingHorizontal: 16,
     marginVertical: 8,
+    flexDirection: 'row',
   },
   text: {
     ...CommonStyles.h2,
     ...CommonStyles.boldText,
     color: Colors.secondary,
+    flex: 1,
+  },
+  iconBg: {
+    marginRight: 16,
+  },
+  errorBg: {
+    paddingLeft: 36,
+  },
+  errorText: {
+    ...CommonStyles.h2,
+    ...CommonStyles.boldText,
+    color: Colors.error,
+  },
+  errorBorder: {
+    borderWidth: 2,
+    borderColor: Colors.error,
   },
 });

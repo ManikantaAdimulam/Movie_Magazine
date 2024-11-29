@@ -6,6 +6,7 @@ interface IColors {
   buttonBg: string;
   text_primary_2: string;
   white: string;
+  error: string;
 }
 
 const Colors: IColors = {
@@ -16,6 +17,7 @@ const Colors: IColors = {
   text_primary_2: '#262624',
   white: '#fff',
   buttonBg: '#f8bb41',
+  error: '#e35144',
 };
 
 export default Colors;

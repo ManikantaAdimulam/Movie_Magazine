@@ -36,10 +36,10 @@ export default Button;
 
 const styles = StyleSheet.create({
   container: {
-    height: 44,
+    height: 54,
     backgroundColor: Colors.buttonBg,
     ...CommonStyles.centeredItems,
-    borderRadius: 22,
+    borderRadius: 27,
     marginVertical: 8,
   },
   text: {
