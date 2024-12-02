@@ -15,6 +15,7 @@ interface IButtonProps {
   title: string;
   containerStyles?: ViewStyle;
   textStyles?: TextStyle;
+  isDisabled: boolean;
 }
 
 const Button = ({
@@ -22,11 +23,24 @@ const Button = ({
   title,
   containerStyles = {},
   textStyles = {},
+  isDisabled = true,
 }: IButtonProps) => {
   return (
-    <Pressable onPress={onPress}>
-      <View style={[styles.container, containerStyles]}>
-        <Text style={[styles.text, textStyles]}>{title}</Text>
+    <Pressable onPress={onPress} disabled={isDisabled}>
+      <View
+        style={[
+          styles.container,
+          isDisabled ? styles.disabledButtonBg : {},
+          containerStyles,
+        ]}>
+        <Text
+          style={[
+            styles.text,
+            isDisabled ? styles.disabledButtonText : {},
+            textStyles,
+          ]}>
+          {title}
+        </Text>
       </View>
     </Pressable>
   );
@@ -41,6 +55,12 @@ const styles = StyleSheet.create({
     ...CommonStyles.centeredItems,
     borderRadius: 27,
     marginVertical: 8,
+  },
+  disabledButtonBg: {
+    backgroundColor: Colors.disabled,
+  },
+  disabledButtonText: {
+    color: Colors.white,
   },
   text: {
     ...CommonStyles.h2,

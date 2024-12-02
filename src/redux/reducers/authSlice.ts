@@ -2,14 +2,14 @@ import {createSlice} from '@reduxjs/toolkit';
 
 //
 interface IAuthState {
-  name: string;
-  password: string;
+  email: string | null;
+  password: string | null;
   isLoggedIn: boolean;
 }
 
 //
 const initialState: IAuthState = {
-  name: '',
+  email: '',
   password: '',
   isLoggedIn: false,
 };
@@ -20,12 +20,14 @@ const authSlice = createSlice({
   initialState: initialState,
   reducers: {
     saveUserDetails(state, action) {
-      const {name = null, password = null} = action.payload;
-      return {...state, userName: name, password: password};
+      const {email = null, password = null}: IAuthState = action.payload;
+      return {...state, email: email, password: password, isLoggedIn: true};
     },
   },
 });
 
 export const authReducer = authSlice.reducer;
+
+export const authActions = authSlice.actions;
 
 export default authSlice;

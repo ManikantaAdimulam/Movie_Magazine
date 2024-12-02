@@ -39,7 +39,7 @@ const Input = ({
         <TextInput
           onChangeText={onChangeText}
           placeholder={placeholder}
-          style={[styles.text, error ? styles.errorText : {}, style]}
+          style={[styles.text, error ? {color: Colors.error} : {}, style]}
           placeholderTextColor={placeholderColor}
         />
       </View>
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   },
   text: {
     ...CommonStyles.h2,
-    ...CommonStyles.boldText,
+    // ...CommonStyles.boldText,
     color: Colors.secondary,
     flex: 1,
   },
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   errorText: {
     ...CommonStyles.h2,
-    ...CommonStyles.boldText,
+    fontSize: 14,
     color: Colors.error,
   },
   errorBorder: {

@@ -1,4 +1,12 @@
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Utils from '@utils/utils';
 import CommonStyles from '@utils/theme/styles';
@@ -8,8 +16,13 @@ import Colors from '@utils/theme/colors';
 import Button from '@components/button';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import {AuthState} from '@screens/auth/type';
+import {useNavigation} from '@react-navigation/native';
+import {screens} from '@services/navigation/constants';
+import {useDispatch} from 'react-redux';
+import {authActions} from '@redux/reducers/authSlice';
 
 const Authentication = () => {
+  //
   const [state, setState] = useState<AuthState>({
     mail: '',
     password: '',
@@ -17,7 +30,9 @@ const Authentication = () => {
     password_error: null,
   });
 
-  useEffect(() => {}, []);
+  //
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const onEmilEnter = (text: string) => {
     const error = Utils.validateEmail(text);
@@ -41,41 +56,73 @@ const Authentication = () => {
     }));
   };
 
+  const onSignUp = () => {
+    dispatch(
+      authActions.saveUserDetails({
+        email: state.mail,
+        password: state.password,
+      }),
+    );
+    navigation.navigate(screens.MOVIES);
+  };
+
+  const isButtonDisabled =
+    state.email_error !== null ||
+    state.password_error !== null ||
+    state.mail.length <= 0 ||
+    state.password.length <= 0;
+
   //
   return (
-    <View style={[CommonStyles.bg_primary, styles.container]}>
-      <SafeAreaView />
-      <View style={[CommonStyles.bg_primary, styles.centerViewBG]}>
-        <Text style={[CommonStyles.h1, CommonStyles.boldText, styles.h1]}>
-          {'Welcome'}
-        </Text>
-        <View style={styles.h2Bg}>
-          <Text style={[CommonStyles.h2, styles.h2]}>{'To get start,'}</Text>
-          <Text style={[CommonStyles.h2, styles.h2]}>
-            {'Please enter email id and password.'}
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={[CommonStyles.bg_primary, styles.container]}>
+      <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
+        <View style={[CommonStyles.bg_primary, styles.centerViewBG]}>
+          <SafeAreaView />
+          <Text style={[CommonStyles.h1, CommonStyles.boldText, styles.h1]}>
+            {'Welcome'}
           </Text>
+          <View style={styles.h2Bg}>
+            <Text style={[CommonStyles.h2, styles.h2]}>{'To get start,'}</Text>
+            <Text style={[CommonStyles.h2, styles.h2]}>
+              {'Please enter email id and password.'}
+            </Text>
+          </View>
+          <View style={[CommonStyles.bg_secondary, styles.centerView]}>
+            <Input
+              placeholder={'Email'}
+              LeadingView={
+                <EntypoIcon
+                  name="mail"
+                  size={20}
+                  color={Colors.text_secondary}
+                />
+              }
+              onChangeText={onEmilEnter}
+              error={state.email_error}
+            />
+            <Input
+              placeholder={'Password'}
+              LeadingView={
+                <EntypoIcon
+                  name="key"
+                  size={20}
+                  color={Colors.text_secondary}
+                />
+              }
+              onChangeText={onPasswordEnter}
+              error={state.password_error}
+            />
+            <Button
+              onPress={onSignUp}
+              title={'Sign Up'}
+              isDisabled={isButtonDisabled}
+            />
+          </View>
         </View>
-        <View style={[CommonStyles.bg_secondary, styles.centerView]}>
-          <Input
-            placeholder={'Email'}
-            LeadingView={
-              <EntypoIcon name="mail" size={20} color={Colors.text_secondary} />
-            }
-            onChangeText={onEmilEnter}
-            error={state.email_error}
-          />
-          <Input
-            placeholder={'Password'}
-            LeadingView={
-              <EntypoIcon name="key" size={20} color={Colors.text_secondary} />
-            }
-            onChangeText={onPasswordEnter}
-            error={state.password_error}
-          />
-          <Button onPress={() => {}} title={'Sign Up'} />
-        </View>
-      </View>
-    </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -85,14 +132,13 @@ const styles = StyleSheet.create({
   centerView: {
     borderRadius: 16,
     justifyContent: 'center',
-    // padding: 16,
   },
   centerViewBG: {
-    // justifyContent: 'center',
     paddingTop: 50,
   },
   container: {
     padding: 16,
+    justifyContent: 'flex-end',
   },
   h1: {
     fontSize: 36,

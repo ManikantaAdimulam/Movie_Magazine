@@ -7,7 +7,7 @@ const CommonStyles = StyleSheet.create({
     backgroundColor: Colors.primary,
   },
   bg_secondary: {
-    backgroundColor: Colors.secondary,
+    // backgroundColor: Colors.secondary,
   },
   centeredItems: {
     alignItems: 'center',

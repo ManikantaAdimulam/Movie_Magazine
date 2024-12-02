@@ -9,14 +9,16 @@ import React from 'react';
 import {View} from 'react-native';
 
 import {Provider} from 'react-redux';
-import store from '@redux/index';
-import {NavigationContainer} from '@react-navigation/native';
+import store, {persistor} from '@redux/index';
 import Routes from '@services/navigation/navigator';
+import {PersistGate} from 'redux-persist/integration/react';
 
 function App(): React.JSX.Element {
   return (
     <Provider store={store}>
-      <Routes />
+      <PersistGate loading={null} persistor={persistor}>
+        {Routes()}
+      </PersistGate>
     </Provider>
   );
 }

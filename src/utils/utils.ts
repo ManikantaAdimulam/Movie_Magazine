@@ -21,7 +21,7 @@ const validatePassword = (text: string): string | null => {
   if (passwordRegex.test(text)) {
     return null;
   }
-  return 'Password must contain Alpha Numeric with at least one Capital Letter and 1 Special Character and minimum of 8 characters.';
+  return 'Password must be - \n⦿ Alpha Numeric \n⦿ At least 1 Capital Letter \n⦿ 1 Special Character \n⦿ Minimum of 8 characters.';
 };
 
 const Utils = {
