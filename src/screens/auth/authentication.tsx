@@ -20,6 +20,7 @@ import {useNavigation} from '@react-navigation/native';
 import {screens} from '@services/navigation/constants';
 import {useDispatch} from 'react-redux';
 import {authActions} from '@redux/reducers/authSlice';
+import strings from '@utils/localisation';
 
 const Authentication = () => {
   //
@@ -81,17 +82,17 @@ const Authentication = () => {
         <View style={[CommonStyles.bg_primary, styles.centerViewBG]}>
           <SafeAreaView />
           <Text style={[CommonStyles.h1, CommonStyles.boldText, styles.h1]}>
-            {'Welcome'}
+            {strings.welcome}
           </Text>
           <View style={styles.h2Bg}>
-            <Text style={[CommonStyles.h2, styles.h2]}>{'To get start,'}</Text>
+            <Text style={[CommonStyles.h2, styles.h2]}>{strings.start}</Text>
             <Text style={[CommonStyles.h2, styles.h2]}>
-              {'Please enter email id and password.'}
+              {strings.enter_cred}
             </Text>
           </View>
           <View style={[CommonStyles.bg_secondary, styles.centerView]}>
             <Input
-              placeholder={'Email'}
+              placeholder={strings.email}
               LeadingView={
                 <EntypoIcon
                   name="mail"
@@ -103,7 +104,7 @@ const Authentication = () => {
               error={state.email_error}
             />
             <Input
-              placeholder={'Password'}
+              placeholder={strings.password}
               LeadingView={
                 <EntypoIcon
                   name="key"
@@ -116,7 +117,7 @@ const Authentication = () => {
             />
             <Button
               onPress={onSignUp}
-              title={'Sign Up'}
+              title={strings.sign_up}
               isDisabled={isButtonDisabled}
             />
           </View>

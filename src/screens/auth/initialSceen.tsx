@@ -7,6 +7,7 @@ import Colors from '@utils/theme/colors';
 import {useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import {screens} from '@services/navigation/constants';
+import strings from '@utils/localisation';
 
 const InitialScreen = () => {
   const isAuthenticated = useSelector(
@@ -15,17 +16,18 @@ const InitialScreen = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
+    console.log(isAuthenticated);
     if (isAuthenticated) {
       navigation.navigate(screens.MOVIES);
       return;
     }
-    navigation.navigate(screens.INITIAL);
+    navigation.navigate(screens.AUTH);
   }, [isAuthenticated]);
 
   return (
     <View style={styles.container}>
       <Icon name={'movie-roll'} size={150} color={Colors.white} />
-      <Text style={styles.text}>MOVIES MAGAZINE</Text>
+      <Text style={styles.text}>{strings.title}</Text>
     </View>
   );
 };

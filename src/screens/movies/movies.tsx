@@ -12,6 +12,7 @@ import MovieCard from '@screens/movies/components/movieCard';
 import {useGetMoviesQuery} from '@services/network/api/moviesApi';
 import {Movie} from '@services/network/api/types';
 import Colors from '@utils/theme/colors';
+import strings from '@utils/localisation';
 
 const Movies = () => {
   const {isLoading, data, error} = useGetMoviesQuery({
@@ -21,12 +22,12 @@ const Movies = () => {
   const renderItem = ({item: {poster_path, title}}: {item: Movie}) => {
     return <MovieCard poster_path={poster_path} title={title} />;
   };
-
+  console.log(isLoading, data, error);
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <SafeAreaView />
-        <Text style={styles.text}>Movies</Text>
+        <Text style={styles.text}>{strings.movies}</Text>
       </View>
       <SafeAreaView style={styles.container}>
         {isLoading ? (
