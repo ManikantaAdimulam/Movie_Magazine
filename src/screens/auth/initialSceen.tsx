@@ -8,6 +8,8 @@ import {useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import {screens} from '@services/navigation/constants';
 import strings from '@utils/localisation';
+import MZText from '@components/text';
+import {useIsRTL} from '@utils/hooks/useIsRTL';
 
 const InitialScreen = () => {
   //
@@ -15,10 +17,15 @@ const InitialScreen = () => {
     (state: RootState) => state?.auth?.isLoggedIn,
   );
   const navigation = useNavigation();
+  const {language} = useIsRTL();
 
   //
   useEffect(() => {
-    console.log(isAuthenticated);
+    strings.setLanguage(language);
+  }, [language]);
+
+  //
+  useEffect(() => {
     if (isAuthenticated) {
       navigation.navigate(screens.MOVIES);
       return;
@@ -29,7 +36,7 @@ const InitialScreen = () => {
   return (
     <View style={styles.container}>
       <Icon name={'movie-roll'} size={150} color={Colors.white} />
-      <Text style={styles.text}>{strings.title}</Text>
+      <MZText localisedKey={'title'} textProps={{style: styles.text}} />
     </View>
   );
 };

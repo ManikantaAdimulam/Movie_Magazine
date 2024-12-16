@@ -9,6 +9,10 @@ import {
 import React from 'react';
 import CommonStyles from '@utils/theme/styles';
 import Colors from '@utils/theme/colors';
+import {useSelector} from 'react-redux';
+import {RootState} from '@reduxjs/toolkit';
+import {Languages} from '@utils/enum/enums';
+import MZText from '@components/text';
 interface IInputProps {
   placeholder: string;
   placeholderColor?: string;
@@ -27,6 +31,13 @@ const Input = ({
   error = null,
   onChangeText,
 }: IInputProps) => {
+  //
+  const {language} = useSelector((state: RootState) => state.app);
+
+  //
+  const isRTL = language == Languages.ar;
+
+  //
   return (
     <View>
       <View
@@ -34,6 +45,7 @@ const Input = ({
           styles.inputBg,
           containerStyle,
           error ? styles.errorBorder : {},
+          isRTL ? CommonStyles.rtl : {},
         ]}>
         <View style={styles.iconBg}>{LeadingView && LeadingView}</View>
         <TextInput
@@ -45,7 +57,7 @@ const Input = ({
       </View>
       {error && (
         <View style={styles.errorBg}>
-          <Text style={styles.errorText}>{error}</Text>
+          <MZText text={error} textProps={{style: styles.errorText}} />
         </View>
       )}
     </View>

@@ -16,11 +16,6 @@ import strings from '@utils/localisation';
 
 function App(): React.JSX.Element {
   //
-  useEffect(() => {
-    strings.setLanguage('en');
-  }, []);
-
-  //
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>

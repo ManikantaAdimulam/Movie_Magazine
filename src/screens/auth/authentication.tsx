@@ -3,6 +3,7 @@ import {
   Platform,
   ScrollView,
   StyleSheet,
+  Switch,
   Text,
   TextInput,
   View,
@@ -21,6 +22,8 @@ import {screens} from '@services/navigation/constants';
 import {useDispatch} from 'react-redux';
 import {authActions} from '@redux/reducers/authSlice';
 import strings from '@utils/localisation';
+import Language from '@components/language';
+import MZText from '@components/text';
 
 const Authentication = () => {
   //
@@ -81,14 +84,22 @@ const Authentication = () => {
       <ScrollView bounces={false} showsVerticalScrollIndicator={false}>
         <View style={[CommonStyles.bg_primary, styles.centerViewBG]}>
           <SafeAreaView />
-          <Text style={[CommonStyles.h1, CommonStyles.boldText, styles.h1]}>
-            {strings.welcome}
-          </Text>
+          <Language />
+          <MZText
+            localisedKey={'welcome'}
+            textProps={{
+              style: [CommonStyles.h1, CommonStyles.boldText, styles.h1],
+            }}
+          />
           <View style={styles.h2Bg}>
-            <Text style={[CommonStyles.h2, styles.h2]}>{strings.start}</Text>
-            <Text style={[CommonStyles.h2, styles.h2]}>
-              {strings.enter_cred}
-            </Text>
+            <MZText
+              localisedKey={'start'}
+              textProps={{style: [CommonStyles.h2, styles.h2]}}
+            />
+            <MZText
+              localisedKey={'enter_cred'}
+              textProps={{style: [CommonStyles.h2, styles.h2]}}
+            />
           </View>
           <View style={[CommonStyles.bg_secondary, styles.centerView]}>
             <Input

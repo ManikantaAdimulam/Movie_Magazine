@@ -24,6 +24,12 @@ const CommonStyles = StyleSheet.create({
   boldText: {
     fontWeight: 'bold',
   },
+  rtl: {
+    flexDirection: 'row-reverse',
+  },
+  rtlText: {
+    textAlign: 'right',
+  },
 });
 
 export default CommonStyles;

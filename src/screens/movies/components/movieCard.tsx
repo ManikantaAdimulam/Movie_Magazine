@@ -3,6 +3,7 @@ import React from 'react';
 import Colors from '@utils/theme/colors';
 import CommonStyles from '@utils/theme/styles';
 import {Movie} from '@services/network/api/types';
+import MZText from '@components/text';
 
 const MovieCard = (item: Movie) => {
   //
@@ -16,7 +17,7 @@ const MovieCard = (item: Movie) => {
             : 'https://via.placeholder.com/150',
         }}>
         <View style={styles.titleBG}>
-          <Text style={styles.text}>{item.title}</Text>
+          <MZText text={item.title} textProps={{style: styles.text}} />
         </View>
       </ImageBackground>
     </View>

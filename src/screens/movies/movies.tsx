@@ -13,6 +13,8 @@ import {useGetMoviesQuery} from '@services/network/api/moviesApi';
 import {Movie} from '@services/network/api/types';
 import Colors from '@utils/theme/colors';
 import strings from '@utils/localisation';
+import Language from '@components/language';
+import MZText from '@components/text';
 
 const Movies = () => {
   //
@@ -30,9 +32,10 @@ const Movies = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <SafeAreaView />
-        <Text style={styles.text}>{strings.movies}</Text>
+        <MZText localisedKey={'movies'} textProps={{style: styles.text}} />
       </View>
       <SafeAreaView style={styles.container}>
+        <Language />
         {isLoading ? (
           <ActivityIndicator size={'large'} animating={isLoading} />
         ) : (
