@@ -2,6 +2,8 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 # Getting Started
 
+<img src="./images/Simulator Screenshot - iPhone 15 - 2024-12-02 at 16.21.49.png?raw=true" width="400">       <img src="./images/Simulator Screenshot - iPhone 15 - 2024-12-02 at 16.25.24.png?raw=true" width="400">     <img src="./images/Simulator Screenshot - iPhone 15 - 2024-12-02 at 16.26.20.png?raw=true" width="400">       <img src="./images/Simulator Screenshot - iPhone 15 - 2024-12-02 at 16.26.30.png?raw=true" width="400">
+
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
 ## Step 1: Start the Metro Server
