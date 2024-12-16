@@ -10,11 +10,13 @@ import {screens} from '@services/navigation/constants';
 import strings from '@utils/localisation';
 
 const InitialScreen = () => {
+  //
   const isAuthenticated = useSelector(
     (state: RootState) => state?.auth?.isLoggedIn,
   );
   const navigation = useNavigation();
 
+  //
   useEffect(() => {
     console.log(isAuthenticated);
     if (isAuthenticated) {

@@ -5,6 +5,7 @@ import CommonStyles from '@utils/theme/styles';
 import {Movie} from '@services/network/api/types';
 
 const MovieCard = (item: Movie) => {
+  //
   return (
     <View style={styles.container}>
       <ImageBackground

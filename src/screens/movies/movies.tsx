@@ -15,14 +15,17 @@ import Colors from '@utils/theme/colors';
 import strings from '@utils/localisation';
 
 const Movies = () => {
+  //
   const {isLoading, data, error} = useGetMoviesQuery({
     endPoint:
       'movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc',
   });
+
   const renderItem = ({item: {poster_path, title}}: {item: Movie}) => {
     return <MovieCard poster_path={poster_path} title={title} />;
   };
-  console.log(isLoading, data, error);
+
+  //
   return (
     <View style={styles.container}>
       <View style={styles.header}>
