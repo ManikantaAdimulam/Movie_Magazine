@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React, {useEffect} from 'react';
 import CommonStyles from '@utils/theme/styles';
 import {RootState} from '@redux/index';

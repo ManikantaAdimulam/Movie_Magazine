@@ -1,4 +1,4 @@
-import {Image, ImageBackground, StyleSheet, Text, View} from 'react-native';
+import {ImageBackground, StyleSheet, View} from 'react-native';
 import React from 'react';
 import Colors from '@utils/theme/colors';
 import CommonStyles from '@utils/theme/styles';

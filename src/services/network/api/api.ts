@@ -1,6 +1,5 @@
 import {
   BaseQueryFn,
-  FetchArgs,
   fetchBaseQuery,
   FetchBaseQueryError,
 } from '@reduxjs/toolkit/query/react';

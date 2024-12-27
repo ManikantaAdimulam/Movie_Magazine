@@ -3,7 +3,6 @@ import {
   FlatList,
   SafeAreaView,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import React from 'react';
@@ -12,7 +11,6 @@ import MovieCard from '@screens/movies/components/movieCard';
 import {useGetMoviesQuery} from '@services/network/api/moviesApi';
 import {Movie} from '@services/network/api/types';
 import Colors from '@utils/theme/colors';
-import strings from '@utils/localisation';
 import Language from '@components/language';
 import MZText from '@components/text';
 

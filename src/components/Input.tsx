@@ -1,17 +1,9 @@
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  TextStyle,
-  View,
-  ViewStyle,
-} from 'react-native';
+import {StyleSheet, TextInput, TextStyle, View, ViewStyle} from 'react-native';
 import React from 'react';
 import CommonStyles from '@utils/theme/styles';
 import Colors from '@utils/theme/colors';
 import {useSelector} from 'react-redux';
 import {RootState} from '@reduxjs/toolkit';
-import {Languages} from '@utils/enum/enums';
 import MZText from '@components/text';
 import strings from '@utils/localisation';
 import {useIsRTL} from '@utils/hooks/useIsRTL';

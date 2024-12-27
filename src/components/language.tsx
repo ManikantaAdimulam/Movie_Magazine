@@ -1,5 +1,5 @@
 import {Pressable, StyleSheet, Text, View} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 import Colors from '@utils/theme/colors';
 import strings from '@utils/localisation';
 import {Languages} from '@utils/enum/enums';

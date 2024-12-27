@@ -3,9 +3,6 @@ import {
   Platform,
   ScrollView,
   StyleSheet,
-  Switch,
-  Text,
-  TextInput,
   View,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
@@ -21,7 +18,6 @@ import {useNavigation} from '@react-navigation/native';
 import {screens} from '@navigation/constants';
 import {useDispatch} from 'react-redux';
 import {authActions} from '@redux/reducers/authSlice';
-import strings from '@utils/localisation';
 import Language from '@components/language';
 import MZText from '@components/text';
 
