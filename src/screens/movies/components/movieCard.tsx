@@ -6,7 +6,6 @@ import {Movie} from '@services/network/api/types';
 import MZText from '@components/text';
 
 const MovieCard = (item: Movie) => {
-  //
   return (
     <View style={styles.container}>
       <ImageBackground

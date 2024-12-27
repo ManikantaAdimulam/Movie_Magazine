@@ -6,25 +6,22 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Colors from '@utils/theme/colors';
 import {useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
-import {screens} from '@services/navigation/constants';
+import {screens} from '@navigation/constants';
 import strings from '@utils/localisation';
 import MZText from '@components/text';
 import {useIsRTL} from '@utils/hooks/useIsRTL';
 
 const InitialScreen = () => {
-  //
   const isAuthenticated = useSelector(
     (state: RootState) => state?.auth?.isLoggedIn,
   );
   const navigation = useNavigation();
   const {language} = useIsRTL();
 
-  //
   useEffect(() => {
     strings.setLanguage(language);
   }, [language]);
 
-  //
   useEffect(() => {
     if (isAuthenticated) {
       navigation.navigate(screens.MOVIES);

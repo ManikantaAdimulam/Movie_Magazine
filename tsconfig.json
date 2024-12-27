@@ -10,7 +10,8 @@
       "@screens/*": ["screens/*"],
       "@services/*": ["services/*"],
       "@redux/*": ["redux/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@navigation": ["navigation/*"]
     }
   },
   "include": [

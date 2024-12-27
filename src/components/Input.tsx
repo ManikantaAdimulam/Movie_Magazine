@@ -13,6 +13,8 @@ import {useSelector} from 'react-redux';
 import {RootState} from '@reduxjs/toolkit';
 import {Languages} from '@utils/enum/enums';
 import MZText from '@components/text';
+import strings from '@utils/localisation';
+import {useIsRTL} from '@utils/hooks/useIsRTL';
 interface IInputProps {
   placeholder: string;
   placeholderColor?: string;
@@ -31,13 +33,10 @@ const Input = ({
   error = null,
   onChangeText,
 }: IInputProps) => {
-  //
   const {language} = useSelector((state: RootState) => state.app);
 
-  //
-  const isRTL = language == Languages.ar;
+  const {isRTL} = useIsRTL();
 
-  //
   return (
     <View>
       <View
@@ -50,14 +49,19 @@ const Input = ({
         <View style={styles.iconBg}>{LeadingView && LeadingView}</View>
         <TextInput
           onChangeText={onChangeText}
-          placeholder={placeholder}
-          style={[styles.text, error ? {color: Colors.error} : {}, style]}
+          placeholder={strings.getString(placeholder)}
+          style={[
+            styles.text,
+            isRTL ? styles.rtlText : {},
+            error ? {color: Colors.error} : {},
+            style,
+          ]}
           placeholderTextColor={placeholderColor}
         />
       </View>
       {error && (
         <View style={styles.errorBg}>
-          <MZText text={error} textProps={{style: styles.errorText}} />
+          <MZText localisedKey={error} textProps={{style: styles.errorText}} />
         </View>
       )}
     </View>
@@ -78,7 +82,6 @@ const styles = StyleSheet.create({
   },
   text: {
     ...CommonStyles.h2,
-    // ...CommonStyles.boldText,
     color: Colors.secondary,
     flex: 1,
   },
@@ -96,5 +99,9 @@ const styles = StyleSheet.create({
   errorBorder: {
     borderWidth: 2,
     borderColor: Colors.error,
+  },
+  rtlText: {
+    textAlign: 'right',
+    marginRight: 8,
   },
 });

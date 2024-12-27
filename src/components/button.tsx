@@ -9,6 +9,8 @@ import {
 import React from 'react';
 import Colors from '@utils/theme/colors';
 import CommonStyles from '@utils/theme/styles';
+import strings from '@utils/localisation';
+import {useIsRTL} from '@utils/hooks/useIsRTL';
 
 interface IButtonProps {
   onPress: () => void;
@@ -25,6 +27,8 @@ const Button = ({
   textStyles = {},
   isDisabled = true,
 }: IButtonProps) => {
+  const isRTL = useIsRTL();
+
   return (
     <Pressable onPress={onPress} disabled={isDisabled}>
       <View
@@ -37,9 +41,10 @@ const Button = ({
           style={[
             styles.text,
             isDisabled ? styles.disabledButtonText : {},
+            isRTL ? {} : {},
             textStyles,
           ]}>
-          {title}
+          {strings.getString(title)}
         </Text>
       </View>
     </Pressable>

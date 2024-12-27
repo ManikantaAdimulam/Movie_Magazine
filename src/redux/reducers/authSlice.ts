@@ -1,20 +1,17 @@
 import {createSlice} from '@reduxjs/toolkit';
 
-//
 interface IAuthState {
   email: string | null;
   password: string | null;
   isLoggedIn: boolean;
 }
 
-//
 const initialState: IAuthState = {
   email: '',
   password: '',
   isLoggedIn: false,
 };
 
-//
 const authSlice = createSlice({
   name: 'auth',
   initialState: initialState,

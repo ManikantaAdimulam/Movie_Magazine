@@ -5,14 +5,12 @@
  * @format
  */
 
-import React, {useEffect} from 'react';
-import {View} from 'react-native';
+import React from 'react';
 
 import {Provider} from 'react-redux';
 import store, {persistor} from '@redux/index';
-import Routes from '@services/navigation/navigator';
+import Routes from '@navigation/navigator';
 import {PersistGate} from 'redux-persist/integration/react';
-import strings from '@utils/localisation';
 
 function App(): React.JSX.Element {
   //

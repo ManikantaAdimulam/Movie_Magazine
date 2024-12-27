@@ -17,7 +17,6 @@ import Language from '@components/language';
 import MZText from '@components/text';
 
 const Movies = () => {
-  //
   const {isLoading, data, error} = useGetMoviesQuery({
     endPoint:
       'movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc',
@@ -27,7 +26,6 @@ const Movies = () => {
     return <MovieCard poster_path={poster_path} title={title} />;
   };
 
-  //
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -67,7 +65,7 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   columnWrapper: {
-    justifyContent: 'space-between', // Adds gap between columns
+    justifyContent: 'space-between',
   },
   text: {
     ...CommonStyles.h1,

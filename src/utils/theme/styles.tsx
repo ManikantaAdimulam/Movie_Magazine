@@ -6,9 +6,6 @@ const CommonStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.primary,
   },
-  bg_secondary: {
-    // backgroundColor: Colors.secondary,
-  },
   centeredItems: {
     alignItems: 'center',
     justifyContent: 'center',

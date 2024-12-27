@@ -10,17 +10,17 @@ import {appActions} from '@redux/reducers/appSlice';
 const Language = () => {
   const dispatch = useDispatch();
   const {language} = useSelector((state: RootState) => state.app);
-  //
+
   const changeToEn = () => {
     dispatch(appActions.changeLanguage(Languages.en));
     strings.setLanguage(Languages.en);
   };
+
   const changeToAr = () => {
     dispatch(appActions.changeLanguage(Languages.ar));
     strings.setLanguage(Languages.ar);
   };
 
-  //
   return (
     <View style={styles.container}>
       <Pressable onPress={changeToEn}>

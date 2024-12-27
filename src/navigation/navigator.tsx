@@ -8,15 +8,12 @@ import Authentication from '@screens/auth/authentication';
 import Movies from '@screens/movies/movies';
 import InitialScreen from '@screens/auth/initialSceen';
 
-//
 const Stack = createNativeStackNavigator();
 
-//
 const options: NativeStackNavigationOptions = {
   headerShown: false,
 };
 
-//
 const Routes = (isAuthenticated: boolean = false) => {
   return (
     <NavigationContainer>

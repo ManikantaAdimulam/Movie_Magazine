@@ -18,7 +18,7 @@ import Button from '@components/button';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import {AuthState} from '@screens/auth/type';
 import {useNavigation} from '@react-navigation/native';
-import {screens} from '@services/navigation/constants';
+import {screens} from '@navigation/constants';
 import {useDispatch} from 'react-redux';
 import {authActions} from '@redux/reducers/authSlice';
 import strings from '@utils/localisation';
@@ -26,7 +26,6 @@ import Language from '@components/language';
 import MZText from '@components/text';
 
 const Authentication = () => {
-  //
   const [state, setState] = useState<AuthState>({
     mail: '',
     password: '',
@@ -34,7 +33,6 @@ const Authentication = () => {
     password_error: null,
   });
 
-  //
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -76,7 +74,6 @@ const Authentication = () => {
     state.mail.length <= 0 ||
     state.password.length <= 0;
 
-  //
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -101,9 +98,9 @@ const Authentication = () => {
               textProps={{style: [CommonStyles.h2, styles.h2]}}
             />
           </View>
-          <View style={[CommonStyles.bg_secondary, styles.centerView]}>
+          <View style={[styles.centerView]}>
             <Input
-              placeholder={strings.email}
+              placeholder={'email'}
               LeadingView={
                 <EntypoIcon
                   name="mail"
@@ -115,7 +112,7 @@ const Authentication = () => {
               error={state.email_error}
             />
             <Input
-              placeholder={strings.password}
+              placeholder={'password'}
               LeadingView={
                 <EntypoIcon
                   name="key"
@@ -128,7 +125,7 @@ const Authentication = () => {
             />
             <Button
               onPress={onSignUp}
-              title={strings.sign_up}
+              title={'sign_up'}
               isDisabled={isButtonDisabled}
             />
           </View>

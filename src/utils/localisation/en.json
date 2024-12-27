@@ -4,7 +4,11 @@
   "enter_cred": "Please enter email id and password.",
   "email": "Email",
   "password": "Password",
-  "sign_up": "Sign Up",
+  "sign_up": "Login",
   "movies": "Movies",
-  "title": "MOVIES MAGAZINE"
+  "title": "MOVIES MAGAZINE",
+  "empty_email": "Email cannot be empty.",
+  "empty_password": "Password cannot be empty.",
+  "invalid_email": "Email is not valid.",
+  "invalid_password": "Password must be - \n⦿ Alpha Numeric \n⦿ At least 1 Capital Letter \n⦿ 1 Special Character \n⦿ Minimum of 8 characters."
 }
